@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Arrays, Vectors & OOPs - Student Test</title>
+    <style>
+        /* CSS Styling - Ek hi file mein */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .quiz-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+        h2 { 
+            text-align: center; 
+            color: #1a73e8; 
+            border-bottom: 2px solid #f0f2f5;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        .question-block {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #f9fbfc;
+            border-radius: 8px;
+            border-left: 4px solid #1a73e8;
+        }
+        .question-title { 
+            font-size: 1.1em; 
+            margin-bottom: 15px; 
+            font-weight: 600; 
+            color: #202124;
+        }
+        .options { margin-bottom: 10px; }
+        .option-label {
+            display: block;
+            background: #ffffff;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border: 1px solid #dadce0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        .option-label:hover { 
+            background: #e8f0fe; 
+            border-color: #1a73e8;
+        }
+        input[type="radio"] { 
+            margin-right: 12px; 
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+        .btn-submit {
+            background: #1a73e8; 
+            color: white; 
+            border: none;
+            padding: 15px 25px; 
+            font-size: 1.1em; 
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer; 
+            width: 100%; 
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        .btn-submit:hover { 
+            background: #1557b0; 
+            box-shadow: 0 4px 10px rgba(26, 115, 232, 0.3);
+        }
+        #result-box {
+            display: none; 
+            text-align: center; 
+            padding: 40px 20px;
+        }
+        #result-score {
+            font-size: 2em; 
+            font-weight: bold; 
+            color: #188038;
+            margin-bottom: 10px;
+        }
+        #result-msg {
+            font-size: 1.2em;
+            color: #5f6368;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <div id="quiz-header">
+        <h2>Computer Science Test: 2D Arrays, Vectors & OOPs</h2>
+        <div id="quiz-content"></div>
+        <button class="btn-submit" id="submitBtn" onclick="calculateScore()">Submit Test</button>
+    </div>
+    
+    <div id="result-box">
+        <div id="result-score"></div>
+        <div id="result-msg">Test successfully submitted!</div>
+        <button class="btn-submit" style="margin-top: 30px; width: 50%;" onclick="location.reload()">Restart Test</button>
+    </div>
+</div>
+
+<script>
+    // Pure 30 Questions yahan hain
+    const quizData = [
+        // --- 2D Arrays ---
+        { q: "1. In a 2D array int arr[3][4], how many total elements can be stored?", opt: ["7", "12", "8", "14"], ans: 1 },
+        { q: "2. Which of the following is the correct way to initialize a 2D array?", opt: ["int arr[2][2] = {1, 2, 3, 4};", "int arr[][] = {{1,2}, {3,4}};", "int arr[2][] = {{1,2}, {3,4}};", "Both A and C"], ans: 0 },
+        { q: "3. In a 2D array, row-major order means:", opt: ["Elements of a column are stored in contiguous memory.", "Elements of a row are stored in contiguous memory.", "Elements are stored diagonally.", "Elements are stored randomly."], ans: 1 },
+        { q: "4. What is the time complexity to traverse all elements of a 2D array of size N x M?", opt: ["O(N)", "O(M)", "O(N + M)", "O(N x M)"], ans: 3 },
+        { q: "5. How do you access the element in the 2nd row and 3rd column of a 0-indexed 2D array arr?", opt: ["arr[2][3]", "arr[1][2]", "arr[3][2]", "arr[2][1]"], ans: 1 },
+        { q: "6. A jagged array is basically:", opt: ["A 1D array of 1D arrays with the same length.", "A 2D array where each row can have a different number of columns.", "A 2D array with negative indices.", "An array that cannot be modified."], ans: 1 },
+        { q: "7. When passing a 2D array to a function in C++, which dimension must explicitly be specified?", opt: ["Both row and column", "Only the row", "Only the column", "Neither row nor column"], ans: 2 },
+        { q: "8. If the base address of arr[10][20] is 1000, and the size of an integer is 4 bytes, what is the address of arr[2][3] assuming row-major allocation?", opt: ["1172", "1012", "1160", "1088"], ans: 0 },
+        { q: "9. Which data structure is best suited to represent a grid or a chessboard?", opt: ["Linked List", "Stack", "1D Array", "2D Array"], ans: 3 },
+        { q: "10. What happens if you try to access arr[5][5] in an array declared as int arr[4][4]?", opt: ["Compile-time error", "Returns 0 automatically", "Undefined behavior (Out of bounds)", "Expands the array size dynamically"], ans: 2 },
+
+        // --- Vectors ---
+        { q: "11. What is the main advantage of a Vector over a standard Array in C++/Java?", opt: ["Vectors use less memory.", "Vectors can dynamically resize themselves.", "Vectors are strictly faster than arrays.", "Vectors can store multiple data types at once."], ans: 1 },
+        { q: "12. In C++ STL, which function is used to add an element to the end of a vector?", opt: ["push_front()", "insert_back()", "append()", "push_back()"], ans: 3 },
+        { q: "13. What is the difference between size() and capacity() of a vector?", opt: ["They are exactly the same.", "size() is the number of elements present, capacity() is total memory allocated.", "capacity() is the number of elements present, size() is total memory allocated.", "capacity() is always double the size()."], ans: 1 },
+        { q: "14. When a C++ vector runs out of capacity and a new element is added, what typically happens internally?", opt: ["Throws an Out of Memory error.", "Deletes the first element to make space.", "Allocates a new, larger block of memory and copies old elements.", "Compresses the existing elements."], ans: 2 },
+        { q: "15. Which vector method removes all elements from the vector?", opt: ["delete_all()", "clear()", "empty()", "erase_all()"], ans: 1 },
+        { q: "16. What does the pop_back() function do?", opt: ["Returns the last element without removing it.", "Removes the first element of the vector.", "Removes the last element of the vector.", "Swaps the first and last elements."], ans: 2 },
+        { q: "17. How can you create a 2D Vector in C++ with 3 rows and 4 columns, initialized to 0?", opt: ["vector<vector<int>> v(3, vector<int>(4, 0));", "vector<int> v[3][4] = {0};", "vector<vector<int>> v(4, 3, 0);", "vector<int, int> v(3, 4);"], ans: 0 },
+        { q: "18. Which function guarantees bounds checking when accessing a vector element?", opt: ["operator[]", "front()", "at()", "back()"], ans: 2 },
+        { q: "19. What does the empty() function of a vector return?", opt: ["0 if the vector is empty, 1 otherwise.", "True if the vector has size 0, False otherwise.", "Empties the vector entirely.", "Returns the number of empty slots in the capacity."], ans: 1 },
+        { q: "20. Which iterator points to the theoretical element after the last element in a vector?", opt: ["v.begin()", "v.end()", "v.rbegin()", "v.back()"], ans: 1 },
+
+        // --- OOPs ---
+        { q: "21. Wrapping up data and functions into a single unit is called:", opt: ["Inheritance", "Polymorphism", "Encapsulation", "Abstraction"], ans: 2 },
+        { q: "22. Which feature of OOP allows a class to derive properties and characteristics from another class?", opt: ["Polymorphism", "Encapsulation", "Inheritance", "Message Passing"], ans: 2 },
+        { q: "23. Function Overloading is an example of:", opt: ["Run-time Polymorphism", "Compile-time Polymorphism", "Multilevel Inheritance", "Data Hiding"], ans: 1 },
+        { q: "24. What is a Constructor?", opt: ["A function called when an object is destroyed.", "A special function used to initialize objects when they are created.", "A class that cannot be inherited.", "A keyword used to allocate memory."], ans: 1 },
+        { q: "25. Which access specifier allows a class member to be accessed by its derived classes but not by the outside world?", opt: ["Private", "Public", "Protected", "Global"], ans: 2 },
+        { q: "26. The 'Diamond Problem' is an ambiguity that arises in which type of inheritance?", opt: ["Single Inheritance", "Hierarchical Inheritance", "Multilevel Inheritance", "Multiple Inheritance"], ans: 3 },
+        { q: "27. An abstract class is a class that:", opt: ["Has no methods.", "Cannot be instantiated (no objects can be created from it).", "Cannot be inherited by other classes.", "Only contains private variables."], ans: 1 },
+        { q: "28. In C++, what keyword is used to achieve Run-time Polymorphism through method overriding?", opt: ["virtual", "override", "dynamic", "static"], ans: 0 },
+        { q: "29. What is a Destructor?", opt: ["A method that clears all private data.", "A method invoked automatically when an object is destroyed to free resources.", "A tool used to debug OOP code.", "A method that forcefully crashes the program."], ans: 1 },
+        { q: "30. Which of the following cannot be a friend function in C++?", opt: ["A global function", "A member function of another class", "A constructor", "It can be any of the above"], ans: 2 }
+    ];
+
+    const quizContent = document.getElementById('quiz-content');
+
+    // UI Render Logic
+    function loadQuiz() {
+        quizData.forEach((item, index) => {
+            const block = document.createElement('div');
+            block.className = 'question-block';
+            
+            // Question Title
+            const title = document.createElement('div');
+            title.className = 'question-title';
+            title.innerText = item.q;
+            block.appendChild(title);
+
+            // Options
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options';
+            item.opt.forEach((optionText, optIndex) => {
+                const label = document.createElement('label');
+                label.className = 'option-label';
+                // Using input radio inline
+                label.innerHTML = `<input type="radio" name="q${index}" value="${optIndex}"> ${optionText}`;
+                optionsDiv.appendChild(label);
+            });
+            
+            block.appendChild(optionsDiv);
+            quizContent.appendChild(block);
+        });
+    }
+
+    // Score Calculation Logic
+    function calculateScore() {
+        let score = 0;
+        quizData.forEach((item, index) => {
+            const selected = document.querySelector(`input[name="q${index}"]:checked`);
+            if (selected && parseInt(selected.value) === item.ans) {
+                score++;
+            }
+        });
+
+        // Hide quiz, show results
+        document.getElementById('quiz-header').style.display = 'none';
+        const resultBox = document.getElementById('result-box');
+        const scoreDisplay = document.getElementById('result-score');
+        
+        resultBox.style.display = 'block';
+        scoreDisplay.innerText = `You scored ${score} / ${quizData.length}`;
+        
+        // Window scroll to top
+        window.scrollTo(0, 0);
+    }
+
+    // Start App
+    loadQuiz();
+</script>
+
+</body>
+</html>
