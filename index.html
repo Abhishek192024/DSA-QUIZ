@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2D Arrays, Vectors & OOPs - Student Test</title>
+    <title>DSA Mega Quiz - 100 Questions</title>
     <style>
-        /* CSS Styling - Ek hi file mein */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f0f2f5;
@@ -101,56 +100,121 @@
 
 <div class="quiz-container">
     <div id="quiz-header">
-        <h2>Computer Science Test: 2D Arrays, Vectors & OOPs</h2>
+        <h2>Data Structure Mega Test (100 Questions)</h2>
         <div id="quiz-content"></div>
         <button class="btn-submit" id="submitBtn" onclick="calculateScore()">Submit Test</button>
     </div>
     
     <div id="result-box">
         <div id="result-score"></div>
-        <div id="result-msg">Test successfully submitted!</div>
+        <div id="result-msg">Test successfully submitted! Great effort.</div>
         <button class="btn-submit" style="margin-top: 30px; width: 50%;" onclick="location.reload()">Restart Test</button>
     </div>
 </div>
 
 <script>
-    // Pure 30 Questions yahan hain
+    // 100 Data Structure MCQs extracted from your PDF
     const quizData = [
-        // --- 2D Arrays ---
-        { q: "1. In a 2D array int arr[3][4], how many total elements can be stored?", opt: ["7", "12", "8", "14"], ans: 1 },
-        { q: "2. Which of the following is the correct way to initialize a 2D array?", opt: ["int arr[2][2] = {1, 2, 3, 4};", "int arr[][] = {{1,2}, {3,4}};", "int arr[2][] = {{1,2}, {3,4}};", "Both A and C"], ans: 0 },
-        { q: "3. In a 2D array, row-major order means:", opt: ["Elements of a column are stored in contiguous memory.", "Elements of a row are stored in contiguous memory.", "Elements are stored diagonally.", "Elements are stored randomly."], ans: 1 },
-        { q: "4. What is the time complexity to traverse all elements of a 2D array of size N x M?", opt: ["O(N)", "O(M)", "O(N + M)", "O(N x M)"], ans: 3 },
-        { q: "5. How do you access the element in the 2nd row and 3rd column of a 0-indexed 2D array arr?", opt: ["arr[2][3]", "arr[1][2]", "arr[3][2]", "arr[2][1]"], ans: 1 },
-        { q: "6. A jagged array is basically:", opt: ["A 1D array of 1D arrays with the same length.", "A 2D array where each row can have a different number of columns.", "A 2D array with negative indices.", "An array that cannot be modified."], ans: 1 },
-        { q: "7. When passing a 2D array to a function in C++, which dimension must explicitly be specified?", opt: ["Both row and column", "Only the row", "Only the column", "Neither row nor column"], ans: 2 },
-        { q: "8. If the base address of arr[10][20] is 1000, and the size of an integer is 4 bytes, what is the address of arr[2][3] assuming row-major allocation?", opt: ["1172", "1012", "1160", "1088"], ans: 0 },
-        { q: "9. Which data structure is best suited to represent a grid or a chessboard?", opt: ["Linked List", "Stack", "1D Array", "2D Array"], ans: 3 },
-        { q: "10. What happens if you try to access arr[5][5] in an array declared as int arr[4][4]?", opt: ["Compile-time error", "Returns 0 automatically", "Undefined behavior (Out of bounds)", "Expands the array size dynamically"], ans: 2 },
-
-        // --- Vectors ---
-        { q: "11. What is the main advantage of a Vector over a standard Array in C++/Java?", opt: ["Vectors use less memory.", "Vectors can dynamically resize themselves.", "Vectors are strictly faster than arrays.", "Vectors can store multiple data types at once."], ans: 1 },
-        { q: "12. In C++ STL, which function is used to add an element to the end of a vector?", opt: ["push_front()", "insert_back()", "append()", "push_back()"], ans: 3 },
-        { q: "13. What is the difference between size() and capacity() of a vector?", opt: ["They are exactly the same.", "size() is the number of elements present, capacity() is total memory allocated.", "capacity() is the number of elements present, size() is total memory allocated.", "capacity() is always double the size()."], ans: 1 },
-        { q: "14. When a C++ vector runs out of capacity and a new element is added, what typically happens internally?", opt: ["Throws an Out of Memory error.", "Deletes the first element to make space.", "Allocates a new, larger block of memory and copies old elements.", "Compresses the existing elements."], ans: 2 },
-        { q: "15. Which vector method removes all elements from the vector?", opt: ["delete_all()", "clear()", "empty()", "erase_all()"], ans: 1 },
-        { q: "16. What does the pop_back() function do?", opt: ["Returns the last element without removing it.", "Removes the first element of the vector.", "Removes the last element of the vector.", "Swaps the first and last elements."], ans: 2 },
-        { q: "17. How can you create a 2D Vector in C++ with 3 rows and 4 columns, initialized to 0?", opt: ["vector<vector<int>> v(3, vector<int>(4, 0));", "vector<int> v[3][4] = {0};", "vector<vector<int>> v(4, 3, 0);", "vector<int, int> v(3, 4);"], ans: 0 },
-        { q: "18. Which function guarantees bounds checking when accessing a vector element?", opt: ["operator[]", "front()", "at()", "back()"], ans: 2 },
-        { q: "19. What does the empty() function of a vector return?", opt: ["0 if the vector is empty, 1 otherwise.", "True if the vector has size 0, False otherwise.", "Empties the vector entirely.", "Returns the number of empty slots in the capacity."], ans: 1 },
-        { q: "20. Which iterator points to the theoretical element after the last element in a vector?", opt: ["v.begin()", "v.end()", "v.rbegin()", "v.back()"], ans: 1 },
-
-        // --- OOPs ---
-        { q: "21. Wrapping up data and functions into a single unit is called:", opt: ["Inheritance", "Polymorphism", "Encapsulation", "Abstraction"], ans: 2 },
-        { q: "22. Which feature of OOP allows a class to derive properties and characteristics from another class?", opt: ["Polymorphism", "Encapsulation", "Inheritance", "Message Passing"], ans: 2 },
-        { q: "23. Function Overloading is an example of:", opt: ["Run-time Polymorphism", "Compile-time Polymorphism", "Multilevel Inheritance", "Data Hiding"], ans: 1 },
-        { q: "24. What is a Constructor?", opt: ["A function called when an object is destroyed.", "A special function used to initialize objects when they are created.", "A class that cannot be inherited.", "A keyword used to allocate memory."], ans: 1 },
-        { q: "25. Which access specifier allows a class member to be accessed by its derived classes but not by the outside world?", opt: ["Private", "Public", "Protected", "Global"], ans: 2 },
-        { q: "26. The 'Diamond Problem' is an ambiguity that arises in which type of inheritance?", opt: ["Single Inheritance", "Hierarchical Inheritance", "Multilevel Inheritance", "Multiple Inheritance"], ans: 3 },
-        { q: "27. An abstract class is a class that:", opt: ["Has no methods.", "Cannot be instantiated (no objects can be created from it).", "Cannot be inherited by other classes.", "Only contains private variables."], ans: 1 },
-        { q: "28. In C++, what keyword is used to achieve Run-time Polymorphism through method overriding?", opt: ["virtual", "override", "dynamic", "static"], ans: 0 },
-        { q: "29. What is a Destructor?", opt: ["A method that clears all private data.", "A method invoked automatically when an object is destroyed to free resources.", "A tool used to debug OOP code.", "A method that forcefully crashes the program."], ans: 1 },
-        { q: "30. Which of the following cannot be a friend function in C++?", opt: ["A global function", "A member function of another class", "A constructor", "It can be any of the above"], ans: 2 }
+        { q: "1. Data structure ka main purpose kya hota hai? [cite: 2]", opt: ["Data delete karna", "Data organize karna", "Data print karna", "Data hide karna"], ans: 1 },
+        { q: "2. Kaunsa linear data structure hai? [cite: 7]", opt: ["Tree", "Graph", "Array", "Heap"], ans: 2 },
+        { q: "3. Non-linear data structure ka example kaunsa hai? [cite: 12]", opt: ["Stack", "Queue", "Tree", "Array"], ans: 2 },
+        { q: "4. Time complexity ko kaise represent karte hain? [cite: 17]", opt: ["O(n)", "T(n)", "f(n)", "Sabhi"], ans: 3 },
+        { q: "5. Best case complexity kya hoti hai? [cite: 22]", opt: ["Maximum time", "Minimum time", "Average time", "None"], ans: 1 },
+        { q: "6. Big-O notation kya batata hai? [cite: 27]", opt: ["Exact time", "Worst case", "Best case", "Memory"], ans: 1 },
+        { q: "7. Static data structure ka example kya hai? [cite: 32]", opt: ["Linked List", "Stack", "Array", "Queue"], ans: 2 },
+        { q: "8. Dynamic data structure ka example kya hai? [cite: 37]", opt: ["Array", "Linked List", "Matrix", "String"], ans: 1 },
+        { q: "9. Algorithm ka matlab kya hai? [cite: 42]", opt: ["Code", "Steps to solve problem", "Program", "Language"], ans: 1 },
+        { q: "10. Space complexity kya hoti hai? [cite: 47]", opt: ["Time", "Memory usage", "Speed", "Size"], ans: 1 },
+        { q: "11. ADT ka full form kya hai? [cite: 52]", opt: ["Abstract Data Type", "Advanced Data Table", "Array Data Type", "None"], ans: 0 },
+        { q: "12. Recursion kya hoti hai? [cite: 57]", opt: ["Loop", "Function calling itself", "Condition", "Variable"], ans: 1 },
+        { q: "13. Iteration kya hai? [cite: 62]", opt: ["Recursion", "Loop", "Function", "None"], ans: 1 },
+        { q: "14. Worst case complexity kya hoti hai? [cite: 67]", opt: ["Minimum", "Maximum", "Average", "None"], ans: 1 },
+        { q: "15. Searching algorithm ka use kya hai? [cite: 72]", opt: ["Sort karna", "Find karna", "Delete karna", "Insert karna"], ans: 1 },
+        { q: "16. Sorting algorithm ka use kya hai? [cite: 77]", opt: ["Arrange data", "Delete data", "Insert data", "None"], ans: 0 },
+        { q: "17. Linear search ka time complexity kya hai? [cite: 82]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
+        { q: "18. Binary search ka time complexity kya hai? [cite: 87]", opt: ["O(n)", "O(log n)", "O(n²)", "O(1)"], ans: 1 },
+        { q: "19. Binary search kis par apply hota hai? [cite: 92]", opt: ["Unsorted array", "Sorted array", "Linked list", "Graph"], ans: 1 },
+        { q: "20. Memory allocation ke kitne types hote hain? [cite: 97]", opt: ["1", "2", "3", "4"], ans: 1 },
+        { q: "21. Array me elements kaise store hote hain? [cite: 102]", opt: ["Random", "Sequential", "Linked", "None"], ans: 1 },
+        { q: "22. Array ka index kis se start hota hai? [cite: 107]", opt: ["1", "0", "-1", "2"], ans: 1 },
+        { q: "23. Array me insertion ka time complexity worst case me kya hai? [cite: 112]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
+        { q: "24. Array me deletion ka time complexity kya hai? [cite: 117]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
+        { q: "25. Multi-dimensional array kya hota hai? [cite: 122]", opt: ["1D array", "2D ya more", "Linked list", "Stack"], ans: 1 },
+        { q: "26. Sparse array kya hota hai? [cite: 127]", opt: ["Full data", "Mostly zero", "Sorted array", "None"], ans: 1 },
+        { q: "27. Array ka size kya hota hai? [cite: 132]", opt: ["Dynamic", "Fixed", "Random", "Infinite"], ans: 1 },
+        { q: "28. Array me direct access ka time kya hai? [cite: 137]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 0 },
+        { q: "29. Prefix sum ka use kya hai? [cite: 142]", opt: ["Searching", "Range sum", "Sorting", "Deletion"], ans: 1 },
+        { q: "30. Sliding window ka use kis me hota hai? [cite: 147]", opt: ["Sorting", "Subarray problems", "Graph", "Tree"], ans: 1 },
+        { q: "31. Two pointer technique ka use kya hai? [cite: 152]", opt: ["Sorting", "Searching pairs", "Graph", "Tree"], ans: 1 },
+        { q: "32. Array ka disadvantage kya hai? [cite: 157]", opt: ["Fixed size", "Random access", "Easy traversal", "None"], ans: 0 },
+        { q: "33. Array ka advantage kya hai? [cite: 162]", opt: ["Dynamic size", "Random access", "Complex", "None"], ans: 1 },
+        { q: "34. Array traversal ka time kya hai? [cite: 167]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
+        { q: "35. Kadane's algorithm kis ke liye use hota hai? [cite: 172]", opt: ["Sorting", "Max subarray sum", "Searching", "Graph"], ans: 1 },
+        { q: "36. Array rotation ka matlab kya hai? [cite: 177]", opt: ["Reverse", "Shift elements", "Delete", "Insert"], ans: 1 },
+        { q: "37. Duplicate find karne ka best approach kya hai? [cite: 182]", opt: ["Sorting", "Hashing", "Loop", "All"], ans: 3 },
+        { q: "38. Binary search me mid ka formula kya hai? [cite: 187]", opt: ["(l+r)/2", "l*r", "l+r", "None"], ans: 0 },
+        { q: "39. Array me minimum element find ka time kya hai? [cite: 193]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
+        { q: "40. Array me maximum element find ka time kya hai? [cite: 198]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
+        { q: "41. Linked list me memory kaise allocate hoti hai? [cite: 203]", opt: ["Contiguous", "Non-contiguous", "Fixed", "None"], ans: 1 },
+        { q: "42. Linked list ka first node kya kehlata hai? [cite: 208]", opt: ["Head", "Tail", "Root", "Node"], ans: 0 },
+        { q: "43. Linked list ka last node kya hota hai? [cite: 213]", opt: ["Head", "Tail", "Root", "None"], ans: 1 },
+        { q: "44. Singly linked list me pointer kitne hote hain? [cite: 218]", opt: ["1", "2", "3", "4"], ans: 0 },
+        { q: "45. Doubly linked list me pointers kitne hote hain? [cite: 223]", opt: ["1", "2", "3", "4"], ans: 1 },
+        { q: "46. Circular linked list me last node kya karta hai? [cite: 228]", opt: ["Null", "First node se connect", "Delete", "None"], ans: 1 },
+        { q: "47. Linked list ka advantage kya hai? [cite: 233]", opt: ["Dynamic size", "Fixed size", "Slow", "None"], ans: 0 },
+        { q: "48. Linked list ka disadvantage kya hai? [cite: 238]", opt: ["Extra memory", "Fast", "Easy", "None"], ans: 0 },
+        { q: "49. Linked list reversal ka time complexity kya hai? [cite: 243]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
+        { q: "50. Floyd cycle detection ka time kya hai? [cite: 248]", opt: ["O(n)", "O(log n)", "O(n²)", "O(1)"], ans: 0 },
+        { q: "51. Middle element find ka approach kya hai? [cite: 253]", opt: ["Loop", "Slow-fast pointer", "Sorting", "None"], ans: 1 },
+        { q: "52. Merge sorted list ka time kya hai? [cite: 258]", opt: ["O(n)", "O(log n)", "O(n²)", "O(1)"], ans: 0 },
+        { q: "53. Linked list traversal ka time kya hai? [cite: 263]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
+        { q: "54. Node me kya hota hai? [cite: 268]", opt: ["Data + pointer", "Data only", "Pointer only", "None"], ans: 0 },
+        { q: "55. Linked list me random access possible hai? [cite: 273]", opt: ["Yes", "No", "Sometimes", "None"], ans: 1 },
+        { q: "56. Linked list ka size kaise find hota hai? [cite: 278]", opt: ["Direct", "Traversal", "Sorting", "None"], ans: 1 },
+        { q: "57. Palindrome check ka best approach kya hai? [cite: 283]", opt: ["Reverse", "Stack", "Both", "None"], ans: 2 },
+        { q: "58. Linked list me deletion ka time kya hai? [cite: 288]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
+        { q: "59. Linked list me insertion ka time kya hai? [cite: 293]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
+        { q: "60. Linked list ka use kaha hota hai? [cite: 298]", opt: ["Dynamic memory", "Static", "Fixed", "None"], ans: 0 },
+        { q: "61. Stack ka principle kya hota hai? [cite: 303]", opt: ["FIFO", "LIFO", "Random", "None"], ans: 1 },
+        { q: "62. Stack me insertion operation kya kehlata hai? [cite: 308]", opt: ["Pop", "Push", "Peek", "Insert"], ans: 1 },
+        { q: "63. Stack me deletion operation kya kehlata hai? [cite: 313]", opt: ["Push", "Pop", "Peek", "Delete"], ans: 1 },
+        { q: "64. Stack me top element kaise access karte hain? [cite: 318]", opt: ["Push", "Pop", "Peek", "None"], ans: 2 },
+        { q: "65. Stack overflow kab hota hai? [cite: 323]", opt: ["Empty ho", "Full ho", "Sorted ho", "None"], ans: 1 },
+        { q: "66. Stack underflow kab hota hai? [cite: 328]", opt: ["Full ho", "Empty ho", "Sorted ho", "None"], ans: 1 },
+        { q: "67. Stack ka use kaha hota hai? [cite: 333]", opt: ["Recursion", "Expression evaluation", "Backtracking", "All"], ans: 3 },
+        { q: "68. Infix to postfix conversion me kya use hota hai? [cite: 338]", opt: ["Queue", "Stack", "Array", "Graph"], ans: 1 },
+        { q: "69. Function call me kya use hota hai? [cite: 343]", opt: ["Queue", "Stack", "Tree", "Graph"], ans: 1 },
+        { q: "70. Stack ka implementation kis se hota hai? [cite: 348]", opt: ["Array", "Linked list", "Both", "None"], ans: 2 },
+        { q: "71. Queue ka principle kya hota hai? [cite: 353]", opt: ["LIFO", "FIFO", "Random", "None"], ans: 1 },
+        { q: "72. Queue me insertion kya kehlata hai? [cite: 358]", opt: ["Push", "Enqueue", "Pop", "Delete"], ans: 1 },
+        { q: "73. Queue me deletion kya kehlata hai? [cite: 363]", opt: ["Dequeue", "Pop", "Push", "Insert"], ans: 0 },
+        { q: "74. Queue ka front element kaha se remove hota hai? [cite: 368]", opt: ["Front", "Rear", "Middle", "None"], ans: 0 },
+        { q: "75. Queue ka rear element kaha add hota hai? [cite: 373]", opt: ["Front", "Rear", "Middle", "None"], ans: 1 },
+        { q: "76. Circular queue ka advantage kya hai? [cite: 378]", opt: ["Space efficient", "Slow", "Complex", "None"], ans: 0 },
+        { q: "77. Priority queue me kaunsa element remove hota hai? [cite: 383]", opt: ["First", "Last", "Highest priority", "Random"], ans: 2 },
+        { q: "78. Queue ka use kaha hota hai? [cite: 388]", opt: ["Scheduling", "Buffer", "BFS", "All"], ans: 3 },
+        { q: "79. Queue overflow kab hota hai? [cite: 393]", opt: ["Empty", "Full", "Sorted", "None"], ans: 1 },
+        { q: "80. Queue underflow kab hota hai? [cite: 398]", opt: ["Empty", "Full", "Sorted", "None"], ans: 0 },
+        { q: "81. Tree ek kaisa data structure hai? [cite: 403]", opt: ["Linear", "Non-linear", "Static", "None"], ans: 1 },
+        { q: "82. Tree ka top node kya kehlata hai? [cite: 408]", opt: ["Leaf", "Root", "Edge", "None"], ans: 1 },
+        { q: "83. Leaf node kya hota hai? [cite: 413]", opt: ["Parent", "No child", "Many child", "None"], ans: 1 },
+        { q: "84. Binary tree me maximum children kitne hote hain? [cite: 418]", opt: ["1", "2", "3", "4"], ans: 1 },
+        { q: "85. Full binary tree kya hota hai? [cite: 423]", opt: ["1 child", "2 ya 0 child", "3 child", "None"], ans: 1 },
+        { q: "86. Tree traversal ke types kaun se hain? [cite: 428]", opt: ["Inorder", "Preorder", "Postorder", "All"], ans: 3 },
+        { q: "87. BST ka full form kya hai? [cite: 433]", opt: ["Binary Search Tree", "Binary Sort Tree", "Both", "None"], ans: 0 },
+        { q: "88. BST me left child ka relation kya hota hai? [cite: 438]", opt: ["Greater", "Smaller", "Equal", "None"], ans: 1 },
+        { q: "89. Tree ka height kya hota hai? [cite: 443]", opt: ["Nodes", "Edges count", "Max depth", "None"], ans: 1 },
+        { q: "90. Heap kya hota hai? [cite: 448]", opt: ["Sorted tree", "Complete binary tree", "Graph", "None"], ans: 1 },
+        { q: "91. Graph me nodes ko kya kehte hain? [cite: 453]", opt: ["Edges", "Vertices", "Links", "None"], ans: 1 },
+        { q: "92. Graph me connection ko kya kehte hain? [cite: 458]", opt: ["Node", "Edge", "Root", "None"], ans: 1 },
+        { q: "93. Directed graph kya hota hai? [cite: 463]", opt: ["No direction", "With direction", "Random", "None"], ans: 1 },
+        { q: "94. Undirected graph kya hota hai? [cite: 468]", opt: ["Direction", "No direction", "Fixed", "None"], ans: 1 },
+        { q: "95. BFS ka full form kya hai? [cite: 473]", opt: ["Breadth First Search", "Binary First Search", "Both", "None"], ans: 0 },
+        { q: "96. DFS ka full form kya hai? [cite: 478]", opt: ["Depth First Search", "Data First Search", "Both", "None"], ans: 0 },
+        { q: "97. BFS me kaunsa data structure use hota hai? [cite: 483]", opt: ["Stack", "Queue", "Array", "Tree"], ans: 1 },
+        { q: "98. DFS me kaunsa data structure use hota hai? [cite: 488]", opt: ["Queue", "Stack", "Array", "Tree"], ans: 1 },
+        { q: "99. Graph representation ke methods kaun se hain? [cite: 493]", opt: ["Matrix", "List", "Both", "None"], ans: 2 },
+        { q: "100. Shortest path algorithm ka example kya hai? [cite: 498]", opt: ["Bubble sort", "Dijkstra", "Merge sort", "Quick sort"], ans: 1 }
     ];
 
     const quizContent = document.getElementById('quiz-content');
@@ -199,10 +263,10 @@
         const scoreDisplay = document.getElementById('result-score');
         
         resultBox.style.display = 'block';
-        scoreDisplay.innerText = `You scored ${score} / ${quizData.length}`;
+        scoreDisplay.innerText = `You scored ${score} out of ${quizData.length}`;
         
         // Window scroll to top
-        window.scrollTo(0, 0);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // Start App
