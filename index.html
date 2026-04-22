@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DSA Mega Quiz - 100 Questions</title>
+    <title>DSA Top 30 MCQs Test</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -100,144 +100,83 @@
 
 <div class="quiz-container">
     <div id="quiz-header">
-        <h2>Data Structure Mega Test (100 Questions)</h2>
+        <h2>Data Structures Test (Top 30 Questions)</h2>
         <div id="quiz-content"></div>
         <button class="btn-submit" id="submitBtn" onclick="calculateScore()">Submit Test</button>
     </div>
     
     <div id="result-box">
         <div id="result-score"></div>
-        <div id="result-msg">Test successfully submitted! Great effort.</div>
+        <div id="result-msg">Test successfully submitted!</div>
         <button class="btn-submit" style="margin-top: 30px; width: 50%;" onclick="location.reload()">Restart Test</button>
     </div>
 </div>
 
 <script>
-    // 100 Data Structure MCQs extracted from your PDF
+    // 30 Handpicked "Good" Questions with proper answers
     const quizData = [
-        { q: "1. Data structure ka main purpose kya hota hai? [cite: 2]", opt: ["Data delete karna", "Data organize karna", "Data print karna", "Data hide karna"], ans: 1 },
-        { q: "2. Kaunsa linear data structure hai? [cite: 7]", opt: ["Tree", "Graph", "Array", "Heap"], ans: 2 },
-        { q: "3. Non-linear data structure ka example kaunsa hai? [cite: 12]", opt: ["Stack", "Queue", "Tree", "Array"], ans: 2 },
-        { q: "4. Time complexity ko kaise represent karte hain? [cite: 17]", opt: ["O(n)", "T(n)", "f(n)", "Sabhi"], ans: 3 },
-        { q: "5. Best case complexity kya hoti hai? [cite: 22]", opt: ["Maximum time", "Minimum time", "Average time", "None"], ans: 1 },
-        { q: "6. Big-O notation kya batata hai? [cite: 27]", opt: ["Exact time", "Worst case", "Best case", "Memory"], ans: 1 },
-        { q: "7. Static data structure ka example kya hai? [cite: 32]", opt: ["Linked List", "Stack", "Array", "Queue"], ans: 2 },
-        { q: "8. Dynamic data structure ka example kya hai? [cite: 37]", opt: ["Array", "Linked List", "Matrix", "String"], ans: 1 },
-        { q: "9. Algorithm ka matlab kya hai? [cite: 42]", opt: ["Code", "Steps to solve problem", "Program", "Language"], ans: 1 },
-        { q: "10. Space complexity kya hoti hai? [cite: 47]", opt: ["Time", "Memory usage", "Speed", "Size"], ans: 1 },
-        { q: "11. ADT ka full form kya hai? [cite: 52]", opt: ["Abstract Data Type", "Advanced Data Table", "Array Data Type", "None"], ans: 0 },
-        { q: "12. Recursion kya hoti hai? [cite: 57]", opt: ["Loop", "Function calling itself", "Condition", "Variable"], ans: 1 },
-        { q: "13. Iteration kya hai? [cite: 62]", opt: ["Recursion", "Loop", "Function", "None"], ans: 1 },
-        { q: "14. Worst case complexity kya hoti hai? [cite: 67]", opt: ["Minimum", "Maximum", "Average", "None"], ans: 1 },
-        { q: "15. Searching algorithm ka use kya hai? [cite: 72]", opt: ["Sort karna", "Find karna", "Delete karna", "Insert karna"], ans: 1 },
-        { q: "16. Sorting algorithm ka use kya hai? [cite: 77]", opt: ["Arrange data", "Delete data", "Insert data", "None"], ans: 0 },
-        { q: "17. Linear search ka time complexity kya hai? [cite: 82]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
-        { q: "18. Binary search ka time complexity kya hai? [cite: 87]", opt: ["O(n)", "O(log n)", "O(n²)", "O(1)"], ans: 1 },
-        { q: "19. Binary search kis par apply hota hai? [cite: 92]", opt: ["Unsorted array", "Sorted array", "Linked list", "Graph"], ans: 1 },
-        { q: "20. Memory allocation ke kitne types hote hain? [cite: 97]", opt: ["1", "2", "3", "4"], ans: 1 },
-        { q: "21. Array me elements kaise store hote hain? [cite: 102]", opt: ["Random", "Sequential", "Linked", "None"], ans: 1 },
-        { q: "22. Array ka index kis se start hota hai? [cite: 107]", opt: ["1", "0", "-1", "2"], ans: 1 },
-        { q: "23. Array me insertion ka time complexity worst case me kya hai? [cite: 112]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
-        { q: "24. Array me deletion ka time complexity kya hai? [cite: 117]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
-        { q: "25. Multi-dimensional array kya hota hai? [cite: 122]", opt: ["1D array", "2D ya more", "Linked list", "Stack"], ans: 1 },
-        { q: "26. Sparse array kya hota hai? [cite: 127]", opt: ["Full data", "Mostly zero", "Sorted array", "None"], ans: 1 },
-        { q: "27. Array ka size kya hota hai? [cite: 132]", opt: ["Dynamic", "Fixed", "Random", "Infinite"], ans: 1 },
-        { q: "28. Array me direct access ka time kya hai? [cite: 137]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 0 },
-        { q: "29. Prefix sum ka use kya hai? [cite: 142]", opt: ["Searching", "Range sum", "Sorting", "Deletion"], ans: 1 },
-        { q: "30. Sliding window ka use kis me hota hai? [cite: 147]", opt: ["Sorting", "Subarray problems", "Graph", "Tree"], ans: 1 },
-        { q: "31. Two pointer technique ka use kya hai? [cite: 152]", opt: ["Sorting", "Searching pairs", "Graph", "Tree"], ans: 1 },
-        { q: "32. Array ka disadvantage kya hai? [cite: 157]", opt: ["Fixed size", "Random access", "Easy traversal", "None"], ans: 0 },
-        { q: "33. Array ka advantage kya hai? [cite: 162]", opt: ["Dynamic size", "Random access", "Complex", "None"], ans: 1 },
-        { q: "34. Array traversal ka time kya hai? [cite: 167]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
-        { q: "35. Kadane's algorithm kis ke liye use hota hai? [cite: 172]", opt: ["Sorting", "Max subarray sum", "Searching", "Graph"], ans: 1 },
-        { q: "36. Array rotation ka matlab kya hai? [cite: 177]", opt: ["Reverse", "Shift elements", "Delete", "Insert"], ans: 1 },
-        { q: "37. Duplicate find karne ka best approach kya hai? [cite: 182]", opt: ["Sorting", "Hashing", "Loop", "All"], ans: 3 },
-        { q: "38. Binary search me mid ka formula kya hai? [cite: 187]", opt: ["(l+r)/2", "l*r", "l+r", "None"], ans: 0 },
-        { q: "39. Array me minimum element find ka time kya hai? [cite: 193]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
-        { q: "40. Array me maximum element find ka time kya hai? [cite: 198]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
-        { q: "41. Linked list me memory kaise allocate hoti hai? [cite: 203]", opt: ["Contiguous", "Non-contiguous", "Fixed", "None"], ans: 1 },
-        { q: "42. Linked list ka first node kya kehlata hai? [cite: 208]", opt: ["Head", "Tail", "Root", "Node"], ans: 0 },
-        { q: "43. Linked list ka last node kya hota hai? [cite: 213]", opt: ["Head", "Tail", "Root", "None"], ans: 1 },
-        { q: "44. Singly linked list me pointer kitne hote hain? [cite: 218]", opt: ["1", "2", "3", "4"], ans: 0 },
-        { q: "45. Doubly linked list me pointers kitne hote hain? [cite: 223]", opt: ["1", "2", "3", "4"], ans: 1 },
-        { q: "46. Circular linked list me last node kya karta hai? [cite: 228]", opt: ["Null", "First node se connect", "Delete", "None"], ans: 1 },
-        { q: "47. Linked list ka advantage kya hai? [cite: 233]", opt: ["Dynamic size", "Fixed size", "Slow", "None"], ans: 0 },
-        { q: "48. Linked list ka disadvantage kya hai? [cite: 238]", opt: ["Extra memory", "Fast", "Easy", "None"], ans: 0 },
-        { q: "49. Linked list reversal ka time complexity kya hai? [cite: 243]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
-        { q: "50. Floyd cycle detection ka time kya hai? [cite: 248]", opt: ["O(n)", "O(log n)", "O(n²)", "O(1)"], ans: 0 },
-        { q: "51. Middle element find ka approach kya hai? [cite: 253]", opt: ["Loop", "Slow-fast pointer", "Sorting", "None"], ans: 1 },
-        { q: "52. Merge sorted list ka time kya hai? [cite: 258]", opt: ["O(n)", "O(log n)", "O(n²)", "O(1)"], ans: 0 },
-        { q: "53. Linked list traversal ka time kya hai? [cite: 263]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
-        { q: "54. Node me kya hota hai? [cite: 268]", opt: ["Data + pointer", "Data only", "Pointer only", "None"], ans: 0 },
-        { q: "55. Linked list me random access possible hai? [cite: 273]", opt: ["Yes", "No", "Sometimes", "None"], ans: 1 },
-        { q: "56. Linked list ka size kaise find hota hai? [cite: 278]", opt: ["Direct", "Traversal", "Sorting", "None"], ans: 1 },
-        { q: "57. Palindrome check ka best approach kya hai? [cite: 283]", opt: ["Reverse", "Stack", "Both", "None"], ans: 2 },
-        { q: "58. Linked list me deletion ka time kya hai? [cite: 288]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
-        { q: "59. Linked list me insertion ka time kya hai? [cite: 293]", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 },
-        { q: "60. Linked list ka use kaha hota hai? [cite: 298]", opt: ["Dynamic memory", "Static", "Fixed", "None"], ans: 0 },
-        { q: "61. Stack ka principle kya hota hai? [cite: 303]", opt: ["FIFO", "LIFO", "Random", "None"], ans: 1 },
-        { q: "62. Stack me insertion operation kya kehlata hai? [cite: 308]", opt: ["Pop", "Push", "Peek", "Insert"], ans: 1 },
-        { q: "63. Stack me deletion operation kya kehlata hai? [cite: 313]", opt: ["Push", "Pop", "Peek", "Delete"], ans: 1 },
-        { q: "64. Stack me top element kaise access karte hain? [cite: 318]", opt: ["Push", "Pop", "Peek", "None"], ans: 2 },
-        { q: "65. Stack overflow kab hota hai? [cite: 323]", opt: ["Empty ho", "Full ho", "Sorted ho", "None"], ans: 1 },
-        { q: "66. Stack underflow kab hota hai? [cite: 328]", opt: ["Full ho", "Empty ho", "Sorted ho", "None"], ans: 1 },
-        { q: "67. Stack ka use kaha hota hai? [cite: 333]", opt: ["Recursion", "Expression evaluation", "Backtracking", "All"], ans: 3 },
-        { q: "68. Infix to postfix conversion me kya use hota hai? [cite: 338]", opt: ["Queue", "Stack", "Array", "Graph"], ans: 1 },
-        { q: "69. Function call me kya use hota hai? [cite: 343]", opt: ["Queue", "Stack", "Tree", "Graph"], ans: 1 },
-        { q: "70. Stack ka implementation kis se hota hai? [cite: 348]", opt: ["Array", "Linked list", "Both", "None"], ans: 2 },
-        { q: "71. Queue ka principle kya hota hai? [cite: 353]", opt: ["LIFO", "FIFO", "Random", "None"], ans: 1 },
-        { q: "72. Queue me insertion kya kehlata hai? [cite: 358]", opt: ["Push", "Enqueue", "Pop", "Delete"], ans: 1 },
-        { q: "73. Queue me deletion kya kehlata hai? [cite: 363]", opt: ["Dequeue", "Pop", "Push", "Insert"], ans: 0 },
-        { q: "74. Queue ka front element kaha se remove hota hai? [cite: 368]", opt: ["Front", "Rear", "Middle", "None"], ans: 0 },
-        { q: "75. Queue ka rear element kaha add hota hai? [cite: 373]", opt: ["Front", "Rear", "Middle", "None"], ans: 1 },
-        { q: "76. Circular queue ka advantage kya hai? [cite: 378]", opt: ["Space efficient", "Slow", "Complex", "None"], ans: 0 },
-        { q: "77. Priority queue me kaunsa element remove hota hai? [cite: 383]", opt: ["First", "Last", "Highest priority", "Random"], ans: 2 },
-        { q: "78. Queue ka use kaha hota hai? [cite: 388]", opt: ["Scheduling", "Buffer", "BFS", "All"], ans: 3 },
-        { q: "79. Queue overflow kab hota hai? [cite: 393]", opt: ["Empty", "Full", "Sorted", "None"], ans: 1 },
-        { q: "80. Queue underflow kab hota hai? [cite: 398]", opt: ["Empty", "Full", "Sorted", "None"], ans: 0 },
-        { q: "81. Tree ek kaisa data structure hai? [cite: 403]", opt: ["Linear", "Non-linear", "Static", "None"], ans: 1 },
-        { q: "82. Tree ka top node kya kehlata hai? [cite: 408]", opt: ["Leaf", "Root", "Edge", "None"], ans: 1 },
-        { q: "83. Leaf node kya hota hai? [cite: 413]", opt: ["Parent", "No child", "Many child", "None"], ans: 1 },
-        { q: "84. Binary tree me maximum children kitne hote hain? [cite: 418]", opt: ["1", "2", "3", "4"], ans: 1 },
-        { q: "85. Full binary tree kya hota hai? [cite: 423]", opt: ["1 child", "2 ya 0 child", "3 child", "None"], ans: 1 },
-        { q: "86. Tree traversal ke types kaun se hain? [cite: 428]", opt: ["Inorder", "Preorder", "Postorder", "All"], ans: 3 },
-        { q: "87. BST ka full form kya hai? [cite: 433]", opt: ["Binary Search Tree", "Binary Sort Tree", "Both", "None"], ans: 0 },
-        { q: "88. BST me left child ka relation kya hota hai? [cite: 438]", opt: ["Greater", "Smaller", "Equal", "None"], ans: 1 },
-        { q: "89. Tree ka height kya hota hai? [cite: 443]", opt: ["Nodes", "Edges count", "Max depth", "None"], ans: 1 },
-        { q: "90. Heap kya hota hai? [cite: 448]", opt: ["Sorted tree", "Complete binary tree", "Graph", "None"], ans: 1 },
-        { q: "91. Graph me nodes ko kya kehte hain? [cite: 453]", opt: ["Edges", "Vertices", "Links", "None"], ans: 1 },
-        { q: "92. Graph me connection ko kya kehte hain? [cite: 458]", opt: ["Node", "Edge", "Root", "None"], ans: 1 },
-        { q: "93. Directed graph kya hota hai? [cite: 463]", opt: ["No direction", "With direction", "Random", "None"], ans: 1 },
-        { q: "94. Undirected graph kya hota hai? [cite: 468]", opt: ["Direction", "No direction", "Fixed", "None"], ans: 1 },
-        { q: "95. BFS ka full form kya hai? [cite: 473]", opt: ["Breadth First Search", "Binary First Search", "Both", "None"], ans: 0 },
-        { q: "96. DFS ka full form kya hai? [cite: 478]", opt: ["Depth First Search", "Data First Search", "Both", "None"], ans: 0 },
-        { q: "97. BFS me kaunsa data structure use hota hai? [cite: 483]", opt: ["Stack", "Queue", "Array", "Tree"], ans: 1 },
-        { q: "98. DFS me kaunsa data structure use hota hai? [cite: 488]", opt: ["Queue", "Stack", "Array", "Tree"], ans: 1 },
-        { q: "99. Graph representation ke methods kaun se hain? [cite: 493]", opt: ["Matrix", "List", "Both", "None"], ans: 2 },
-        { q: "100. Shortest path algorithm ka example kya hai? [cite: 498]", opt: ["Bubble sort", "Dijkstra", "Merge sort", "Quick sort"], ans: 1 }
+        // Basics & Searching (5)
+        { q: "1. Data structure ka main purpose kya hota hai?", opt: ["Data delete karna", "Data organize karna", "Data print karna", "Data hide karna"], ans: 1 }, // [cite: 2, 3, 4, 5, 6]
+        { q: "2. Kaunsa linear data structure hai?", opt: ["Tree", "Graph", "Array", "Heap"], ans: 2 }, // [cite: 7, 8, 9, 10, 11]
+        { q: "3. Worst case complexity kya hoti hai?", opt: ["Minimum", "Maximum", "Average", "None"], ans: 1 }, // [cite: 67, 68, 69, 70, 71]
+        { q: "4. Linear search ka time complexity kya hai?", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 }, // [cite: 82, 83, 84, 85, 86]
+        { q: "5. Binary search ka time complexity kya hai?", opt: ["O(n)", "O(log n)", "O(n²)", "O(1)"], ans: 1 }, // [cite: 87, 88, 89, 90, 91]
+
+        // Arrays (5)
+        { q: "6. Array me elements kaise store hote hain?", opt: ["Random", "Sequential", "Linked", "None"], ans: 1 }, // [cite: 102, 103, 104, 105, 106]
+        { q: "7. Array me insertion ka time complexity worst case me kya hai?", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 }, // [cite: 112, 113, 114, 115, 116]
+        { q: "8. Array ka size kya hota hai?", opt: ["Dynamic", "Fixed", "Random", "Infinite"], ans: 1 }, // [cite: 132, 133, 134, 135, 136]
+        { q: "9. Kadane's algorithm kis ke liye use hota hai?", opt: ["Sorting", "Max subarray sum", "Searching", "Graph"], ans: 1 }, // [cite: 172, 173, 174, 175, 176]
+        { q: "10. Binary search me mid ka formula kya hai?", opt: ["(l+r)/2", "l*r", "l+r", "None"], ans: 0 }, // [cite: 187, 188, 189, 190, 191, 192]
+
+        // Linked List (5)
+        { q: "11. Linked list me memory kaise allocate hoti hai?", opt: ["Contiguous", "Non-contiguous", "Fixed", "None"], ans: 1 }, // [cite: 203, 204, 205, 206, 207]
+        { q: "12. Doubly linked list me pointers kitne hote hain?", opt: ["1", "2", "3", "4"], ans: 1 }, // [cite: 223, 224, 225, 226, 227]
+        { q: "13. Linked list reversal ka time complexity kya hai?", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 }, // [cite: 243, 244, 245, 246, 247]
+        { q: "14. Middle element find ka approach kya hai?", opt: ["Loop", "Slow-fast pointer", "Sorting", "None"], ans: 1 }, // [cite: 253, 254, 255, 256, 257]
+        { q: "15. Linked list me deletion ka time kya hai?", opt: ["O(1)", "O(n)", "O(log n)", "O(n²)"], ans: 1 }, // [cite: 288, 289, 290, 291, 292]
+
+        // Stacks (5)
+        { q: "16. Stack ka principle kya hota hai?", opt: ["FIFO", "LIFO", "Random", "None"], ans: 1 }, // [cite: 303, 304, 305, 306, 307]
+        { q: "17. Stack overflow kab hota hai?", opt: ["Empty ho", "Full ho", "Sorted ho", "None"], ans: 1 }, // [cite: 323, 324, 325, 326, 327]
+        { q: "18. Infix to postfix conversion me kya use hota hai?", opt: ["Queue", "Stack", "Array", "Graph"], ans: 1 }, // [cite: 338, 339, 340, 341, 342]
+        { q: "19. Function call me kya use hota hai?", opt: ["Queue", "Stack", "Tree", "Graph"], ans: 1 }, // [cite: 343, 344, 345, 346, 347]
+        { q: "20. Stack ka implementation kis se hota hai?", opt: ["Array", "Linked list", "Both", "None"], ans: 2 }, // [cite: 348, 349, 350, 351, 352]
+
+        // Queues (4)
+        { q: "21. Queue ka principle kya hota hai?", opt: ["LIFO", "FIFO", "Random", "None"], ans: 1 }, // [cite: 353, 354, 355, 356, 357]
+        { q: "22. Queue ka front element kaha se remove hota hai?", opt: ["Front", "Rear", "Middle", "None"], ans: 0 }, // [cite: 368, 369, 370, 371, 372]
+        { q: "23. Priority queue me kaunsa element remove hota hai?", opt: ["First", "Last", "Highest priority", "Random"], ans: 2 }, // [cite: 383, 384, 385, 386, 387]
+        { q: "24. Queue ka use kaha hota hai?", opt: ["Scheduling", "Buffer", "BFS", "All"], ans: 3 }, // [cite: 388, 389, 390, 391, 392]
+
+        // Trees (4)
+        { q: "25. Tree ek kaisa data structure hai?", opt: ["Linear", "Non-linear", "Static", "None"], ans: 1 }, // [cite: 403, 404, 405, 406, 407]
+        { q: "26. Tree traversal ke types kaun se hain?", opt: ["Inorder", "Preorder", "Postorder", "All"], ans: 3 }, // [cite: 428, 429, 430, 431, 432]
+        { q: "27. BST ka full form kya hai?", opt: ["Binary Search Tree", "Binary Sort Tree", "Both", "None"], ans: 0 }, // [cite: 433, 434, 435, 436, 437]
+        { q: "28. BST me left child ka relation kya hota hai?", opt: ["Greater", "Smaller", "Equal", "None"], ans: 1 }, // [cite: 438, 439, 440, 441, 442]
+
+        // Graphs (2)
+        { q: "29. BFS ka full form kya hai?", opt: ["Breadth First Search", "Binary First Search", "Both", "None"], ans: 0 }, // [cite: 473, 474, 475, 476, 477]
+        { q: "30. BFS me kaunsa data structure use hota hai?", opt: ["Stack", "Queue", "Array", "Tree"], ans: 1 } // [cite: 483, 484, 485, 486, 487]
     ];
 
     const quizContent = document.getElementById('quiz-content');
 
-    // UI Render Logic
     function loadQuiz() {
         quizData.forEach((item, index) => {
             const block = document.createElement('div');
             block.className = 'question-block';
             
-            // Question Title
             const title = document.createElement('div');
             title.className = 'question-title';
             title.innerText = item.q;
             block.appendChild(title);
 
-            // Options
             const optionsDiv = document.createElement('div');
             optionsDiv.className = 'options';
             item.opt.forEach((optionText, optIndex) => {
                 const label = document.createElement('label');
                 label.className = 'option-label';
-                // Using input radio inline
                 label.innerHTML = `<input type="radio" name="q${index}" value="${optIndex}"> ${optionText}`;
                 optionsDiv.appendChild(label);
             });
@@ -247,7 +186,6 @@
         });
     }
 
-    // Score Calculation Logic
     function calculateScore() {
         let score = 0;
         quizData.forEach((item, index) => {
@@ -257,19 +195,16 @@
             }
         });
 
-        // Hide quiz, show results
         document.getElementById('quiz-header').style.display = 'none';
         const resultBox = document.getElementById('result-box');
         const scoreDisplay = document.getElementById('result-score');
         
         resultBox.style.display = 'block';
-        scoreDisplay.innerText = `You scored ${score} out of ${quizData.length}`;
+        scoreDisplay.innerText = `You scored ${score} / 30`;
         
-        // Window scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Start App
     loadQuiz();
 </script>
 
